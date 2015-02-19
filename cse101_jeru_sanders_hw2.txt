@@ -1,0 +1,24 @@
+Jeru Sanders
+cse101 01
+
+
+1. 0111 1101 = 125
+2. 1011 1100 = -68
+
+3. 1000 0000 + 1000 0000 = 0000 0000
+Has carry, 0 in dec, -256 with carry
+
+4. 1110 0001 + 1101 1101 = 1011 1110
+No carry, -98 in dec
+
+5. 1110 0001 + 1001 1101 = 0111 1110
+Has carry, 126 in dec, -130 with carry
+
+6. 0111 1111 + 0111 1111 = 1111 1110
+No carry, -2 in dec, can't repersent
+
+7. 0100 0001 + 0101 1101 = 1001 1110
+No carry, 158 in dec
+
+8. 1000 0000 + 0111 1111 = 11111111
+No carry, -1 in dec, can't repersent
