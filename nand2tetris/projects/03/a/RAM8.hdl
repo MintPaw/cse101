@@ -11,9 +11,9 @@
  */
 
 CHIP RAM8 {
-    IN in[16], load, address[3];
-    OUT out[16];
+	IN in[16], load, address[3];
+	OUT out[16];
 
-    PARTS:
-    // Put your code here:
+	PARTS:
+        
 }
