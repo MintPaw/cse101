@@ -27,10 +27,6 @@ D=M
 @MULT
 D;JGT
 
-@END
-M;JMP
-
         (END)
-
 @END
 M;JMP
