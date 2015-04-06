@@ -1,0 +1,12 @@
+1. Briefly discuss the two most important factors affecting software quality, providing at least one example of each of the factors
+The structure and functionality. Bad structure entails badly written code, it can be hard to debug, and modify.
+Bad functionality entails that the program does not easily do all the of the things that were intended.
+
+2. Briefly discuss requirements elicitation in SDLC and what modeling approach is typically used for the actives
+SDLC is a cycle in which software can be flexibly developed the steps are:
+	1. Requirement Elicitation (Figuring out what the program should have to do)
+	2. Analysis
+	3. System Design
+	4. Object Design
+	5. Implementation
+	6. Testing
