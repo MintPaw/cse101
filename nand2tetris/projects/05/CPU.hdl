@@ -30,14 +30,40 @@ CHIP CPU {
     IN  inM[16],         // M value input  (M = contents of RAM[A])
         instruction[16], // Instruction for execution
         reset;           // Signals whether to re-start the current
-                         // program (reset==1) or continue executing
-                         // the current program (reset==0).
+                         // program (reset=1) or continue executing
+                         // the current program (reset=0).
 
     OUT outM[16],        // M value output
-        writeM,          // Write to M? 
+        writeM,          // Write into M? 
         addressM[15],    // Address in data memory (of M)
         pc[15];          // address of next instruction
 
     PARTS:
-    // Put your code here:
+    Not(in=instruction[15], out=no0);
+    Not(in=no0, out=no1);
+    And(a=no1, b=instruction[5], out=ao0);
+    Mux16(a=instruction, b=aluo0, sel=ao0, out=mo0);
+    Or(a=no0, b=ao0, out=loadA);
+    ARegister(in=mo0, load=loadA, out=oo0);
+
+    Mux16(a=oo0, b=inM, sel=instruction[12], out=mo1);
+    And(a=no1, b=instruction[4], out=ao1);
+    DRegister(in=aluo0, load=ao1, out=do0);
+    ALU(x=do0, y=mo1, zx=instruction[11], nx=instruction[10], zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], out=aluo0, zr=zo0, ng=NGout);
+    
+    Or16(a=false, b=oo0, out[0..14]=addressM);
+    Or16(a=false, b=aluo0, out=outM);
+    And(a=no1, b=instruction[3], out=writeM);
+
+    And(a=zo0, b=instruction[1], out=ao2);
+    And(a=NGout, b=instruction[2], out=ao3);
+    Or(a=zo0, b=NGout, out=oo1);
+    Not(in=oo1, out=no2);
+    And(a=no2, b=instruction[0], out=ao4);
+
+    Or(a=ao2, b=ao3, out=oo2);
+    Or(a=oo2, b=ao4, out=oo3);
+    And(a=no1, b=oo3, out=ao5);
+    Not(in=ao5, out=no3);
+    PC(in=oo0, inc=no3, load=ao5, reset=reset, out[0..14]=pc);
 }
