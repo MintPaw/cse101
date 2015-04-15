@@ -17,6 +17,10 @@ int main()
 
 	int array3[3][3];
 
+	print_uniform_2d_array(size, array1);
+	printf("*\n");
+	print_uniform_2d_array(size, array2);
+	printf("=\n");
 
 	int i;
 	int j;
@@ -36,8 +40,6 @@ int main()
 			{
 				line2[k] = array2[k][j];
 			}
-			print_1d_array(size, line1);
-			print_1d_array(size, line2);
 			array3[i][j] = sum_rows(size, line1, line2);
 		}
 	}
@@ -50,13 +52,9 @@ int sum_rows(int size, int a[], int b[])
 {
 	int sum = 0;
 	int i;
-	int j;
 	for (i = 0; i < size; i++)
 	{
-		for (j = 0; j < size; j++)
-		{
-			sum += a[i] * b[j];
-		}
+		sum += a[i] * b[i];
 	}
 
 	return sum;
