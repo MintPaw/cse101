@@ -3,8 +3,16 @@
 int sum_rows(int size, int a[], int b[]);
 void print_uniform_2d_array(int size, int a[][size]);
 void print_1d_array(int size, int a[]);
+void doThing();
 
 int main()
+{
+	doThing();
+
+	return 0;
+}
+
+void doThing()
 {
 	int size = 3;
 	int array1[3][3] = {{1, 2, 3},
@@ -45,7 +53,6 @@ int main()
 	}
 
 	print_uniform_2d_array(size, array3);
-	return 0;
 }
 
 int sum_rows(int size, int a[], int b[])
